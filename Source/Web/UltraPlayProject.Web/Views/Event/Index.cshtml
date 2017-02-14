@@ -1,0 +1,11 @@
+﻿@model UltraPlayProject.Web.ViewModels.SportEvent.SportEventViewModel
+
+<h2>@Model.Name Matches</h2>
+
+@foreach (var match in Model.Matches)
+{
+    <ul>
+        <li><strong>@Html.ActionLink(match.Name, "Index", $"Match/{match.ID}")</strong></li>
+    </ul>
+}
+

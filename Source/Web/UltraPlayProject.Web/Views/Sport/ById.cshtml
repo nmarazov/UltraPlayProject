@@ -1,0 +1,10 @@
+﻿@model UltraPlayProject.Web.ViewModels.Sport.SportViewModel
+
+<h2>@Model.Name Events</h2>
+
+@foreach (var sportEvent in Model.SportEvents)
+{
+    <ul>
+        <li><strong>@Html.ActionLink(sportEvent.Name, "Index", $"Event/{sportEvent.ID}")</strong></li>
+    </ul>
+}

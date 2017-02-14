@@ -1,19 +1,14 @@
-﻿namespace UltraPlayProject.Web
+﻿using UltraPlayProject.Data.Contracts;
+
+namespace UltraPlayProject.Web
 {
     using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
-
     using Autofac;
     using Autofac.Integration.Mvc;
-
-    using Controllers;
-
     using Data;
-    using Data.Common;
-
-    using Services.Data;
-    using Services.Web;
+    using UltraPlayProject.Data.Repositories;
 
     public static class AutofacConfig
     {
@@ -47,25 +42,13 @@
 
         private static void RegisterServices(ContainerBuilder builder)
         {
-            builder.Register(x => new ApplicationDbContext())
-                .As<DbContext>()
-                .InstancePerRequest();
-            builder.Register(x => new HttpCacheService())
-                .As<ICacheService>()
-                .InstancePerRequest();
-            builder.Register(x => new IdentifierProvider())
-                .As<IIdentifierProvider>()
+            builder.Register(x => new UltraPlayDbContext())
+                .As<IUltraPlayDbContext>()
                 .InstancePerRequest();
 
-            var servicesAssembly = Assembly.GetAssembly(typeof(IJokesService));
-            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
-
-            builder.RegisterGeneric(typeof(DbRepository<>))
-                .As(typeof(IDbRepository<>))
+            builder.RegisterGeneric(typeof(EfGenericRepository<>))
+                .As(typeof(IGenericRepository<>))
                 .InstancePerRequest();
-
-            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-                .AssignableTo<BaseController>().PropertiesAutowired();
         }
     }
 }

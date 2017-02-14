@@ -59,20 +59,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationUser.cs" />
-    <Compile Include="Joke.cs" />
-    <Compile Include="JokeCategory.cs" />
+    <Compile Include="Bet.cs" />
+    <Compile Include="Match.cs" />
+    <Compile Include="Odd.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sport.cs" />
+    <Compile Include="SportEvent.cs" />
+    <Compile Include="XmlSports.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UltraPlayProject.Data.Common\UltraPlayProject.Data.Common.csproj">
-      <Project>{edfe3c57-ef5b-4636-9ecc-d0baca6b6379}</Project>
-      <Name>UltraPlayProject.Data.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />

@@ -1,0 +1,11 @@
+﻿@using System.Web.Mvc.Html
+@model UltraPlayProject.Web.ViewModels.Sport.IndexViewModel
+
+<h2>Sports</h2>
+
+@foreach (var sport in Model.Sports)
+{
+    <ul>
+        <li><strong>@Html.ActionLink(sport.Name, "ById", new RouteValueDictionary(new { Id = sport.ID }))</strong></li>
+    </ul>
+}
